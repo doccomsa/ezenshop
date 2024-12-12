@@ -1,7 +1,10 @@
-package com.ezen.shop.category;
+package com.ezen.shop.admin.category;
 
 import java.util.List;
 
+//import org.apache.ibatis.annotations.Mapper;
+
+//@Mapper
 public interface AdCategoryMapper {
 
 	// 1차 카테고리목록

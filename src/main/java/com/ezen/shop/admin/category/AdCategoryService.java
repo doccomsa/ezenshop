@@ -1,4 +1,4 @@
-package com.ezen.shop.category;
+package com.ezen.shop.admin.category;
 
 import java.util.List;
 
