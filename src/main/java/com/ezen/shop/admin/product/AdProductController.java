@@ -101,7 +101,7 @@ public class AdProductController {
 			
 			// C:\\Dev\\upload\\ckeditor\\abc.gif
 			String ckUploadPath = uploadCKPath + "\\" + fileName;
-			ckUploadPath.replace("\\", File.separator);
+			ckUploadPath = ckUploadPath.replace("\\", File.separator);
 			
 			//스트림 out객체생성이 되면, 해당 경로에 파일은 생성된다. 파일크기는 0byte
 			out = new FileOutputStream(ckUploadPath);
