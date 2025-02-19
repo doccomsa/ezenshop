@@ -1,5 +1,6 @@
 package com.ezen.shop.order;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class OrderController {
 		
 		// 날짜폴더의 역슬래쉬 \ 를 / 로 변환작업
 		cartDetails.forEach(cartVO -> {
-			cartVO.put("pro_up_folder", cartVO.get("pro_up_folder").toString().replace("\\", "/"));
+			cartVO.put("pro_up_folder", cartVO.get("pro_up_folder").toString().replace("\\", File.separator));
 			
 		});
 		
@@ -146,7 +147,7 @@ public class OrderController {
 		
 		// 날짜폴더의 역슬래쉬 \ 를 / 로 변환작업
 		order_info.forEach(o_Info -> {
-			o_Info.put("pro_up_folder", o_Info.get("pro_up_folder").toString().replace("\\", "/"));
+			o_Info.put("pro_up_folder", o_Info.get("pro_up_folder").toString().replace("\\", File.separator));
 			order_total_price += ((int) o_Info.get("dt_amount") * (int) o_Info.get("dt_price"));
 		});
 		
@@ -173,7 +174,7 @@ public class OrderController {
 		
 		// 날짜폴더의 역슬래쉬 \ 를 / 로 변환작업
 		order_list.forEach(o_Info -> {
-			o_Info.put("pro_up_folder", o_Info.get("pro_up_folder").toString().replace("\\", "/"));			
+			o_Info.put("pro_up_folder", o_Info.get("pro_up_folder").toString().replace("\\", File.separator));			
 		});
 		
 		model.addAttribute("order_list", order_list);

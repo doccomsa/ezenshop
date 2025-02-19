@@ -28,14 +28,6 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        
-
-    # (4) GitHub Secrets를 환경 변수로 등록
-    # - name: Set environment variables
-    #   run: |
-    #     echo "MYSQL_MAIN_URL=${{ secrets.MYSQL_MAIN_URL }}" >> application.properties
-    #     echo "MYSQL_MAIN_USERNAME=${{ secrets.MYSQL_MAIN_USERNAME }}" >> application.properties
-    #     echo "MYSQL_MAIN_PASSWORD=${{ secrets.MYSQL_MAIN_PASSWORD }}" >> application.properties
     
     - name: Build with Maven
       run: |

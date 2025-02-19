@@ -1,5 +1,6 @@
 package com.ezen.shop.cart;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +79,7 @@ public class CartController {
 		
 		// 날짜폴더의 역슬래쉬 \ 를 / 로 변환작업
 		cart_list.forEach(cartVO -> {
-			cartVO.put("pro_up_folder", cartVO.get("pro_up_folder").toString().replace("\\", "/"));
+			cartVO.put("pro_up_folder", cartVO.get("pro_up_folder").toString().replace("\\", File.separator));
 			
 		});
 		
@@ -124,6 +125,6 @@ public class CartController {
 	@GetMapping("/image_display")
 	public ResponseEntity<byte[]> image_display(String dateFolderName, String fileName) throws Exception {
 		
-		return fileUtils.getFile(uploadPath + "\\" + dateFolderName, fileName);
+		return fileUtils.getFile(uploadPath + File.separator + dateFolderName, fileName);
 	}
 }
