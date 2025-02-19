@@ -56,7 +56,7 @@ public class AdminController {
 	@GetMapping("/ad_menu")
 	public String menu() {
 		
-		return "/admin/ad_menu";
+		return "admin/ad_menu";
 	}
 	
 }

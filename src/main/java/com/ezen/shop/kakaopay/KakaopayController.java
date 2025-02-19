@@ -88,13 +88,13 @@ public class KakaopayController {
 	@GetMapping("/cancel")
 	public String cancel() {
 		
-		return "/order/order_cancel";
+		return "order/order_cancel";
 	}
 	
 	// 결제가 실패
 	@GetMapping("/fail")
 	public String fail() {
 		
-		return "/order/order_fail";
+		return "order/order_fail";
 	}
 }
