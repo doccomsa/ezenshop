@@ -100,8 +100,10 @@ public class AdProductController {
 			byte[] bytes = upload.getBytes(); // 업로드하는 파일(abc.gif)을 나타내는 바이트배열
 			
 			// C:\\Dev\\upload\\ckeditor\\abc.gif
-			String ckUploadPath = uploadCKPath + "\\" + fileName;
-			ckUploadPath = ckUploadPath.replace("\\", File.separator);
+//			String ckUploadPath = uploadCKPath + "\\" + fileName;
+//			ckUploadPath = ckUploadPath.replace("\\", File.separator);
+			
+			String ckUploadPath = uploadCKPath + File.separator + fileName;
 			
 			//스트림 out객체생성이 되면, 해당 경로에 파일은 생성된다. 파일크기는 0byte
 			out = new FileOutputStream(ckUploadPath);
@@ -193,8 +195,8 @@ public class AdProductController {
 	// 상품목록 이미지출력하기.. 클라이언트에서 보낸 파라미터명 스프링의 컨트롤러에서 받는 파라미터명이 일치해야 한다.
 	@GetMapping("/image_display")
 	public ResponseEntity<byte[]> image_display(String dateFolderName, String fileName) throws Exception {
-		
-		return fileUtils.getFile(uploadPath + "\\" + dateFolderName, fileName);
+		 
+		return fileUtils.getFile(uploadPath + File.separator + dateFolderName, fileName);
 	}
 	
 	// 상품수정 폼
