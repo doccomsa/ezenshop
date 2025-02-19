@@ -172,7 +172,7 @@ public class AdProductController {
 		
 		// 날짜폴더의 \를 /로 변환하는 작업
 		pro_list.forEach(vo -> {
-			vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));	
+			vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", File.separator));	
 		});
 		
 		model.addAttribute("pro_list", pro_list); // 타임리프 페이지서 사용이 가능
@@ -215,7 +215,7 @@ public class AdProductController {
 		ProductVO productVO = adProductService.pro_edit_form(pro_num);
 		// 날짜폴더에 역슬래시가 클라이언트에서 서버로 보내질때 에러가 발생된다.
 		// 그래서, 미리 서버에서 클라이언트로 보낼때 역슬래시를 슬래시로 변환하여, 클라이언트에서 문제를 미연에 방지한다.
-		productVO.setPro_up_folder(productVO.getPro_up_folder().replace("\\", "/"));
+		productVO.setPro_up_folder(productVO.getPro_up_folder().replace("\\", File.separator));
 		model.addAttribute("productVO", productVO);
 		
 		// 상품정보의 있는 2차카테고리 코드.

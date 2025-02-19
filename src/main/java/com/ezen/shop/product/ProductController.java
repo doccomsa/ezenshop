@@ -1,5 +1,6 @@
 package com.ezen.shop.product;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -56,7 +57,7 @@ public class ProductController {
 		List<ProductVO> pro_list = productService.getProductListBysecondCategory(cri, cate_code);
 		
 		
-		pro_list.forEach(pro -> pro.setPro_up_folder(pro.getPro_up_folder().replace("\\", "/")));
+		pro_list.forEach(pro -> pro.setPro_up_folder(pro.getPro_up_folder().replace("\\", File.separator)));
 		
 		//2차 카테고리의 상품목록
 		model.addAttribute("pro_list", pro_list);
@@ -74,7 +75,7 @@ public class ProductController {
 	@GetMapping("/image_display")
 	public ResponseEntity<byte[]> image_display(String dateFolderName, String fileName) throws Exception {
 		
-		return fileUtils.getFile(uploadPath + "\\" + dateFolderName, fileName);
+		return fileUtils.getFile(uploadPath + File.separator + dateFolderName, fileName);
 	}
 	
 	//상품상세정보
@@ -86,7 +87,7 @@ public class ProductController {
 		// 상품정보. 
 		ProductVO productVO = productService.pro_info(pro_num);
 		// 이미지파일의 날짜폴더 \를 /변환하는 작업
-		productVO.setPro_up_folder(productVO.getPro_up_folder().replace("\\", "/"));
+		productVO.setPro_up_folder(productVO.getPro_up_folder().replace("\\", File.separator));
 		
 		model.addAttribute("productVo", productVO);
 	}
