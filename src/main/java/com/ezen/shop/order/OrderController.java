@@ -203,7 +203,7 @@ public class OrderController {
 		
 		// 날짜폴더의 역슬래쉬 \ 를 / 로 변환작업
 		review_list.forEach(r_Info -> {
-			r_Info.put("pro_up_folder", r_Info.get("pro_up_folder").toString().replace("\\", "/"));			
+			r_Info.put("pro_up_folder", r_Info.get("pro_up_folder").toString().replace("\\", File.separator));			
 		});
 		
 		model.addAttribute("review_list", review_list);
@@ -222,7 +222,7 @@ public class OrderController {
 	@GetMapping("/image_display")
 	public ResponseEntity<byte[]> image_display(String dateFolderName, String fileName) throws Exception {
 		
-		return fileUtils.getFile(uploadPath + "\\" + dateFolderName, fileName);
+		return fileUtils.getFile(uploadPath + File.separator + dateFolderName, fileName);
 	}
 	
 }
