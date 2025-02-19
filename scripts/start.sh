@@ -32,6 +32,7 @@ cd $PROJECT_FULL_PATH
 #nohup java -jar $JAR_FILE 1>>$APP_LOG 2>>$ERROR_LOG &
 #nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app1/application-prod-db.properties -Dspring.profiles.active=prod $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
 
+# ec2 80 port 는 sudo권한사용
 sudo nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app1/application-real.properties $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
 
 sleep 30s
