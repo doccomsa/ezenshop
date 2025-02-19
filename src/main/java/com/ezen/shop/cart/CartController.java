@@ -107,6 +107,7 @@ public class CartController {
 		
 		cartService.cart_change(vo);
 		
+		
 		return "redirect:/cart/cart_list";
 	}
 	
