@@ -57,7 +57,7 @@ public class ProductController {
 		List<ProductVO> pro_list = productService.getProductListBysecondCategory(cri, cate_code);
 		
 		
-		pro_list.forEach(pro -> pro.setPro_up_folder(pro.getPro_up_folder().replace("\\", File.separator)));
+//		pro_list.forEach(pro -> pro.setPro_up_folder(pro.getPro_up_folder().replace("\\", File.separator)));
 		
 		//2차 카테고리의 상품목록
 		model.addAttribute("pro_list", pro_list);
