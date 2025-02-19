@@ -22,17 +22,17 @@ echo "$TIME_NOW > $JAR_FILE 파일 복사" >> $DEPLOY_LOG
 
 cd $PROJECT_FULL_PATH
 
-cp $PROJECT_FULL_PATH/study/target/*.jar $JAR_FILE
-#sudo cp /home/ec2-user/app/step2/study/target/study-1.0.0.jar.jar study-1.0.0.jar
+cp $PROJECT_FULL_PATH/ezenshop/target/*.jar $JAR_FILE
+#sudo cp /home/ec2-user/app1/step1/ezenshop/target/ezenshop-1.0.0.jar.jar ezenshop-1.0.0.jar
 
 cd $PROJECT_FULL_PATH
 
 # jar 파일실행
 #nohup java -jar $JAR_FILE 1>$APP_LOG 2>$ERROR_LOG &
 #nohup java -jar $JAR_FILE 1>>$APP_LOG 2>>$ERROR_LOG &
-#nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-prod-db.properties -Dspring.profiles.active=prod $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
+#nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app1/application-prod-db.properties -Dspring.profiles.active=prod $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
 
-nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app/application-real-db.properties $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
+nohup java -jar -Dspring.config.location=classpath:/application.properties,/home/ec2-user/app1/application-real.properties $JAR_FILE > $APP_LOG 2> $ERROR_LOG &
 
 sleep 30s
 
