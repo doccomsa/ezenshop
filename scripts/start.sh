@@ -18,7 +18,7 @@ if [ ! -d $LOG_PATH ]; then
 fi
 
 # build 파일 복사
-echo "$TIME_NOW > $JAR_FILE 파일 복사" >> $DEPLOY_LOG
+echo "$NOW_DATETIME > $JAR_FILE 파일 복사" >> $DEPLOY_LOG
 
 cd $PROJECT_FULL_PATH
 
@@ -26,6 +26,16 @@ cp $PROJECT_FULL_PATH/ezenshop/target/*.jar $JAR_FILE
 #sudo cp /home/ec2-user/app1/step1/ezenshop/target/ezenshop-1.0.0.jar.jar ezenshop-1.0.0.jar
 
 cd $PROJECT_FULL_PATH
+
+
+# 기존 실행중인 프로세스 종료
+CURRENT_PID=$(pgrep -f $JAR_FILE)
+
+if [ -n "$CURRENT_PID" ]; then
+    echo "Stopping existing process: $CURRENT_PID"
+    kill -15 "$CURRENT_PID"
+    sleep 5
+fi
 
 # jar 파일실행
 #nohup java -jar $JAR_FILE 1>$APP_LOG 2>$ERROR_LOG &
@@ -37,9 +47,9 @@ sudo nohup java -jar -Dspring.config.location=classpath:/application.properties,
 
 sleep 30s
 
-CURRENT_PID=$(pgrep -f $JAR_FILE)
+NEW_PID=$(pgrep -f $JAR_FILE)
 
-if [ -z $CURRENT_PID ]; then
+if [ -z "$NEW_PID" ]; then
   echo "$NOW_DATETIME :: $JAR_FILE :: failed to start!" >> $DEPLOY_LOG
 else
   echo "$NOW_DATETIME :: $JAR_FILE :: $CURRENT_PID started!" >> $DEPLOY_LOG
