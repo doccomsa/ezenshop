@@ -31,6 +31,7 @@ cd $PROJECT_FULL_PATH
 # 기존 실행중인 프로세스 종료
 CURRENT_PID=$(pgrep -f $JAR_FILE)
 
+# 문자열 $CURRENT_PID 이 비어있지 않으면(null이 아니면) 참(true)이 됩니다. 프로세스가 존재한다면 의미.
 if [ -n "$CURRENT_PID" ]; then
     echo "Stopping existing process: $CURRENT_PID"
     kill -15 "$CURRENT_PID"
@@ -49,6 +50,7 @@ sleep 30s
 
 NEW_PID=$(pgrep -f $JAR_FILE)
 
+# 문자열 NEW_PID이 비어 있으면(null이면) 참(true)이 됩니다. 프로세스가 존재하지 않는다는 의미.
 if [ -z "$NEW_PID" ]; then
   echo "$NOW_DATETIME :: $JAR_FILE :: failed to start!" >> $DEPLOY_LOG
 else

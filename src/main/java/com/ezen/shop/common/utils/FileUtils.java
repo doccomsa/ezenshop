@@ -35,8 +35,8 @@ public class FileUtils {
 		
 		// File.separator : 현재 운영체제의 파일경로 구분자
 		// 1)리눅스 / : "2024/11/18" 2)윈도우즈 \  "2024\11\18"
-		return str.replace("-", File.separator);
-//		return str.replace("-", "/");
+//		return str.replace("-", File.separator);
+		return str.replace("-", "/");
 	}
 	
 	// File 클래스 : 파일 또는 폴더작업 할때 사용.
